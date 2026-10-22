@@ -6,7 +6,7 @@ export const catalogo = [
     ilustracion: '<line x1="4" y1="44" x2="116" y2="44" class="i-eje"/><path d="M6 42C40 42 60 38 80 22S110 2 116 2" class="i-ambar"/><path d="M6 42C30 42 40 12 70 9S100 8 116 8" class="i-cian"/><line x1="4" y1="8" x2="116" y2="8" class="i-verde" stroke-dasharray="3 3"/>',
   },
   {
-    numero: 2, romano: 'II', titulo: 'Separación de variables', color: 'ciruela', disponible: true,
+    numero: 2, romano: 'II', titulo: 'Separación de variables', color: 'ciruela', disponible: true, valientes: true,
     ilustracion: '<text x="4" y="32" class="i-tex">∫</text><text x="16" y="30" class="i-texto">dy/h</text><text x="54" y="30" class="i-texto i-blanco">=</text><text x="66" y="32" class="i-tex">∫</text><text x="78" y="30" class="i-texto">g dt</text>',
   },
   {

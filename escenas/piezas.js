@@ -3,7 +3,7 @@
 import { ease, mezclar } from '../motor/plano.js';
 
 /** Fórmula KaTeX que entra subiendo un poco y apareciendo. */
-export function formula(g, clave, x, y, codigo, { p = 1, tam = 20, color = 'texto', ancla = 'c', alfa = 1, fondo = false } = {}) {
+export function formula(g, clave, x, y, codigo, { p = 1, tam = 20, color = 'texto', ancla = 'c', alfa = 1, fondo = true } = {}) {
   const q = ease(p);
   g.tex(clave, x, y + (1 - q) * 10, codigo, { color, tam, ancla, alfa: alfa * q, fondo });
 }
