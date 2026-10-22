@@ -1,0 +1,59 @@
+/* ============ la entrada épica ============ */
+.cine { position: fixed; inset: 0; z-index: 1000; background: rgba(0, 0, 0, var(--fondo, 0)); cursor: pointer; overflow: hidden; }
+.cine-lienzo { position: absolute; inset: 0; width: 100%; height: 100%; }
+.cine-banda { position: absolute; left: 0; right: 0; height: 11vh; background: #000; z-index: 2; box-shadow: 0 0 40px 10px #000; }
+.cine-banda.arriba { top: 0; } .cine-banda.abajo { bottom: 0; }
+.cine-cartela { position: absolute; left: 50%; top: 50%; margin: 0; width: min(90vw, 900px); text-align: center; opacity: 0;
+  font: italic 400 clamp(26px, 4vw, 48px)/1.3 var(--lectura); color: #e9dcc0; letter-spacing: .01em; text-shadow: 0 0 30px #d9644a55; z-index: 3; }
+.cine-cartela em { color: #f3a073; }
+.cine-clasificacion { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); opacity: 0; z-index: 3;
+  display: flex; gap: 18px; align-items: center; padding: 18px 26px; border: 3px solid #e9dcc0; background: #000; color: #e9dcc0;
+  font: 14px/1.5 var(--mono); max-width: 640px; }
+.cine-clasificacion b { font: 900 64px/1 var(--lectura); border: 3px solid #e9dcc0; padding: 4px 16px; }
+.cine-clasificacion em { color: #f3a073; font-style: normal; font-weight: 700; }
+.cine-titulo { position: absolute; left: 50%; top: 50%; width: min(92vw, 1100px); text-align: center; opacity: 0; z-index: 3; }
+.cine-titulo small { display: block; font: 700 clamp(12px, 1.4vw, 16px) var(--mono); letter-spacing: .5em; text-transform: uppercase; color: #f3a073; margin-bottom: 14px; }
+.cine-titulo h2 { margin: 0; font: 700 clamp(34px, 5.6vw, 76px)/1.1 var(--lectura); color: #fff4df;
+  text-shadow: 0 0 24px #d9644a, 0 0 70px #d9644a88, 0 4px 0 #6b2414; }
+.cine-subtitulos { position: absolute; bottom: 13vh; left: 0; right: 0; text-align: center; margin: 0; opacity: 0; z-index: 3;
+  font: 15px var(--mono); color: #d6d1c2; }
+.cine-controles { position: absolute; right: 18px; bottom: 14px; z-index: 4; display: flex; gap: 14px; align-items: center; font: 12px var(--mono); color: #737890; }
+.cine-silencio { background: #000; border: 1px solid #2c3040; color: #a9a596; border-radius: 6px; padding: 3px 10px; font: 12px var(--mono); cursor: pointer; }
+.pagina-valiente.desde-negro main { animation: aparecer 1.4s ease-out both; }
+@keyframes aparecer { from { opacity: 0; filter: blur(6px); } to { opacity: 1; filter: none; } }
+
+/* ============ la página de la demostración ============ */
+.pagina-valiente { background: radial-gradient(ellipse 140% 700px at 50% -120px, #1a0805, #000 70%) no-repeat, #000; }
+.pagina-valiente main { max-width: 1180px; margin: 0 auto; padding: 22px 32px 80px; }
+.valiente-cabecera { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 4fr); gap: 28px; align-items: start; margin-top: 18px; }
+.valiente-sello { font: 700 12px var(--mono); letter-spacing: .3em; text-transform: uppercase; color: #f3a073; margin: 0 0 8px; }
+.valiente-cabecera h1 { margin: 0 0 14px; font-weight: 700; font-size: 32px; line-height: 1.25; color: #fff1dc; text-shadow: 0 0 22px #d9644a55; }
+.teorema { padding: 16px 20px; border: 1px solid #5a2216; border-left: 4px solid #d9644a; border-radius: 0 12px 12px 0; background: #0b0403; font-size: 19px; }
+.teorema .rotulo { color: #f3a073; }
+.asume { padding: 14px 18px; border: 1px dashed #3a2a22; border-radius: 12px; font-size: 15.5px; color: var(--texto-2); }
+.asume .rotulo { color: #c9b598; }
+.asume ul { margin: 6px 0 0; padding-left: 18px; }
+.asume li { margin: 4px 0; }
+.cuerpo { margin: 38px 0 0; display: grid; gap: 26px; }
+.bloque { border: 1px solid var(--borde); border-radius: 12px; background: #050304; padding: 16px 20px 10px; }
+.bloque > h3 { margin: 0 0 8px; font-size: 19px; font-weight: 700; color: #f0d9b5; }
+.bloque > h3 .tag { font: 700 11px var(--mono); letter-spacing: .14em; text-transform: uppercase; color: #d9644a; margin-right: 10px; }
+.bloque .enunciado-lema { margin: 0 0 10px; padding: 8px 14px; border-left: 3px solid #d9644a77; background: #0b0403; border-radius: 0 8px 8px 0; }
+.bloque-nota { border-style: dashed; color: var(--texto-2); font-size: 16.5px; }
+ol.razonamiento { list-style: none; margin: 0; padding: 0; counter-reset: r; }
+ol.razonamiento li { counter-increment: r; display: grid; grid-template-columns: 2.6em minmax(0, 1fr) minmax(0, 15em); gap: 14px; padding: 9px 0; border-top: 1px solid #120c0c; font-size: 17px; line-height: 1.7; }
+ol.razonamiento li::before { content: "(" counter(r) ")"; font: 12px var(--mono); color: #8a5a48; padding-top: 4px; }
+ol.razonamiento .porque { font-size: 14.5px; line-height: 1.55; color: #c99448; border-left: 2px solid #3a2a22; padding-left: 12px; }
+ol.razonamiento .porque:empty { border: 0; }
+ol.razonamiento li.conclusion > .texto { color: #fff1dc; }
+.qed { text-align: right; color: #d9644a; font-size: 22px; margin: 4px 0 0; }
+.valiente-escena { margin-top: 44px; }
+.valiente-escena h2 { font-size: 24px; color: #ece7d8; margin: 0 0 4px; }
+.valiente-escena .estudio-amplio .columna-escena { order: -1; }
+.repetir-entrada { background: none; border: 1px solid #5a2216; color: #f3a073; border-radius: 8px; padding: 5px 12px; font: 12px var(--mono); cursor: pointer; margin-left: 12px; }
+@media (max-width: 820px) {
+  .pagina-valiente main { padding: 16px 16px 60px; }
+  .valiente-cabecera { grid-template-columns: minmax(0, 1fr); }
+  ol.razonamiento li { grid-template-columns: 2.2em minmax(0, 1fr); }
+  ol.razonamiento .porque { grid-column: 2; }
+}
