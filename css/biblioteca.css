@@ -35,41 +35,18 @@ a:hover { text-decoration: underline; }
 ::selection { background: #3aa9bb44; }
 .mono, code, input, button { font-family: var(--mono); font-variant-ligatures: none; }
 
-/* ============ escena SVG ============ */
-.escena svg { display: block; width: 100%; height: auto; overflow: visible; font: 13px var(--mono); font-variant-ligatures: none; }
-.c-cian { --c: var(--cian); } .c-ciruela { --c: var(--ciruela); } .c-ambar { --c: var(--ambar); }
-.c-verde { --c: var(--verde); } .c-violeta { --c: var(--violeta); } .c-tenue { --c: var(--tenue); }
-.c-muy-tenue { --c: var(--muy-tenue); } .c-texto { --c: var(--texto); }
-.escena [data-k] {
-  transition: opacity var(--t-paso), cx var(--t-paso), cy var(--t-paso), r var(--t-paso), x var(--t-paso), y var(--t-paso),
-              width var(--t-paso), height var(--t-paso), d var(--t-paso), stroke-dashoffset var(--t-paso), fill var(--t-paso), stroke var(--t-paso),
-              transform var(--t-paso);
-  transition-timing-function: var(--curva);
-  transform-box: fill-box; transform-origin: center;
-}
-.escena text[data-k] { fill: var(--c); stroke: none; }
-.escena circle[data-k] { fill: var(--c); stroke: none; }
-.escena path[data-k], .escena line[data-k] { fill: none; stroke: var(--c); stroke-width: 2; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 0; }
-.escena rect[data-k] { fill: color-mix(in srgb, var(--c) 30%, transparent); stroke: var(--c); stroke-width: 1; }
-.escena .hueco[data-k] { fill: none; stroke: var(--c); stroke-width: 1.6; }
-.escena path.relleno[data-k] { fill: var(--c); }
-.escena .fijo { opacity: 1; }
-.escena .hecho { opacity: .62; }
-.escena text.hecho { opacity: .85; }      /* la memoria escrita debe seguir legible: ≥ 4,5:1 en cian, ámbar y verde */
-.escena .nuevo { opacity: 1; filter: drop-shadow(0 0 5px color-mix(in srgb, var(--c) 70%, transparent)); }
-.escena .ref { opacity: 1; filter: drop-shadow(0 0 3px color-mix(in srgb, var(--c) 55%, transparent)); animation: pulso .7s var(--curva) 1; }
-@keyframes pulso { 0% { transform: scale(1); } 40% { transform: scale(1.18); } 100% { transform: scale(1); } }
-.escena .supuesto { stroke-dasharray: .035 .025 !important; }
-.escena text.entra:not([style*=translate]) { transform: translateY(7px); }   /* el texto sube un poco al aparecer */
-.escena text.supuesto { font-style: italic; opacity: .85; }
-.escena .entra { opacity: 0; stroke-dashoffset: 1; }
-.escena .sale { opacity: 0; }
-.escena .sin-anim [data-k] { transition: none; }
+/* ============ escena (Canvas + rótulos KaTeX superpuestos) ============ */
+.lienzo { position: relative; width: 100%; overflow: hidden; }
+.lienzo canvas { display: block; touch-action: none; }
+.capa-rotulos { position: absolute; left: 0; top: 0; transform-origin: 0 0; pointer-events: none; }
+.rotulo-tex { position: absolute; white-space: nowrap; line-height: 1; text-shadow: 0 0 6px #000, 0 0 2px #000; }
+.rotulo-tex.con-fondo { background: #000c; padding: 3px 6px; border-radius: 5px; }
+.rotulo-tex .katex { font-size: 1em; }
 
 [hidden] { display: none !important; }
 
 /* ============ página de elemento (distribución B) ============ */
-.pagina-elemento main { max-width: 1320px; margin: 0 auto; padding: 22px 32px 60px; }
+.pagina-elemento main, .pagina-tema main { max-width: 1320px; margin: 0 auto; padding: 22px 32px 60px; }
 .migas { font-size: 13px; color: var(--tenue); }
 .migas a { color: var(--texto-2); }
 .cabecera { display: flex; align-items: baseline; gap: 14px; margin: 18px 0 6px; flex-wrap: wrap; }
@@ -108,7 +85,7 @@ ol.pasos li:hover { background: #ffffff06; }
 .tira .miniatura { background: none; border: 1px solid var(--borde-2); border-radius: 8px; padding: 4px; cursor: pointer; text-align: left; color: var(--texto-2); }
 .tira .miniatura.actual, .tira .miniatura:hover { border-color: var(--ambar); }
 .tira .miniatura .escena { padding: 2px; border: 0; }
-.tira .miniatura svg { min-width: 0 !important; }
+.tira .miniatura .rotulo-tex { display: none; }
 .controles { display: flex; align-items: center; gap: 8px; margin: 12px 0; }
 .controles button, .mas-menos { background: var(--panel); border: 1px solid var(--borde-2); color: var(--texto); border-radius: 8px; padding: 5px 12px; font-size: 15px; cursor: pointer; }
 .controles button:hover, .mas-menos:hover:not(:disabled) { border-color: var(--ambar); }
@@ -123,11 +100,9 @@ ol.pasos li:hover { background: #ffffff06; }
 .vecinos { display: flex; justify-content: space-between; gap: 16px; margin-top: 44px; padding-top: 18px; border-top: 1px solid var(--borde); font-size: 16px; }
 
 @media (max-width: 820px) {
-  .pagina-elemento main { padding: 16px 16px 48px; }
+  .pagina-elemento main, .pagina-tema main { padding: 16px 16px 48px; }
   .estudio { grid-template-columns: minmax(0, 1fr); }
   .columna-escena { position: static; }
-  .escena { overflow-x: auto; }                 /* la escena conserva un tamaño legible y se desplaza dentro de su marco */
-  .escena svg { min-width: 600px; }
   .vecinos { flex-direction: column; }
 }
 
@@ -209,3 +184,21 @@ ol.pasos.ocultar-futuros li.futuro { display: none; }
 .practica-en { max-width: 80ch; margin: 30px 0 0; }
 .practica-en ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; color: var(--texto-2); font-size: 16px; }
 .practica-en a { font: 13px var(--mono); }
+
+/* ============ entradas manipulables ============ */
+.entradas { flex-direction: column; gap: 10px; }
+.entrada .etiqueta { color: var(--ciruela); min-width: 2.2em; }
+.entrada-deslizador { gap: 12px; }
+.entrada-deslizador input[type=range] { flex: 1; max-width: 280px; accent-color: var(--ciruela); }
+.entrada-deslizador .valor { min-width: 6ch; color: var(--ciruela); }
+.entrada-funcion { flex-wrap: wrap; }
+.entrada-funcion input { width: 22ch; color: var(--cian); }
+.entrada-funcion .vista-tex { color: var(--cian); font-family: var(--lectura); font-size: 17px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; width: 100%; padding-left: 2.6em; }
+.chip { background: none; border: 1px solid var(--borde-2); color: var(--texto-2); border-radius: 14px; padding: 2px 10px; font-size: 14px; cursor: pointer; }
+.chip:hover { border-color: var(--cian); color: var(--texto); }
+.estudio-amplio { grid-template-columns: minmax(0, 1fr); }
+.estudio.sin-pasos { grid-template-columns: minmax(0, 1fr); }
+.estudio-amplio .columna-escena { position: static; }
+.recuadro { max-width: 70ch; font-size: 18px; margin: 8px 0 18px; padding: 12px 18px; border-left: 3px solid var(--c, var(--verde)); background: var(--panel); border-radius: 0 10px 10px 0; }
+.recuadro .rotulo { color: var(--c, var(--verde)); }

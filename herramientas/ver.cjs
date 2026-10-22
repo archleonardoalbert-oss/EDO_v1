@@ -16,7 +16,7 @@ const RAIZ = path.resolve(__dirname, '..'), PUERTO = 8798;
     await pg.goto(`http://127.0.0.1:${PUERTO}/${ruta}`, { waitUntil: 'networkidle' });
     for (let i = 0; i < Number(pasos); i++) { await pg.click('[data-a=adelante]'); }
     for (const sel of (process.env.CLICS || '').split(',').filter(Boolean)) { await pg.click(sel); await pg.waitForTimeout(200); }
-    await pg.waitForTimeout(900);
+    await pg.waitForTimeout(Number(process.env.ESPERA || 2600));
     await pg.screenshot({ path: salida, fullPage: true });
   } finally { await b.close(); srv.kill(); }
 })();
