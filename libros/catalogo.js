@@ -2,7 +2,7 @@
 // `ilustracion`: SVG pequeño con la idea central del libro (viewBox 0 0 120 50).
 export const catalogo = [
   {
-    numero: 1, romano: 'I', titulo: '¿Qué son las EDO? · Modelación', color: 'cian', disponible: true,
+    numero: 1, romano: 'I', titulo: '¿Qué son las EDO? · Modelación', color: 'cian', disponible: true, valientes: true,
     ilustracion: '<line x1="4" y1="44" x2="116" y2="44" class="i-eje"/><path d="M6 42C40 42 60 38 80 22S110 2 116 2" class="i-ambar"/><path d="M6 42C30 42 40 12 70 9S100 8 116 8" class="i-cian"/><line x1="4" y1="8" x2="116" y2="8" class="i-verde" stroke-dasharray="3 3"/>',
   },
   {

@@ -23,7 +23,7 @@
 @keyframes aparecer { from { opacity: 0; filter: blur(6px); } to { opacity: 1; filter: none; } }
 
 /* ============ la página de la demostración ============ */
-.pagina-valiente { background: radial-gradient(ellipse at 50% -20%, #1a0805, #000 55%) fixed; }
+.pagina-valiente { background: radial-gradient(ellipse 140% 700px at 50% -120px, #1a0805, #000 70%) no-repeat, #000; }
 .pagina-valiente main { max-width: 1180px; margin: 0 auto; padding: 22px 32px 80px; }
 .valiente-cabecera { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 4fr); gap: 28px; align-items: start; margin-top: 18px; }
 .valiente-sello { font: 700 12px var(--mono); letter-spacing: .3em; text-transform: uppercase; color: #f3a073; margin: 0 0 8px; }

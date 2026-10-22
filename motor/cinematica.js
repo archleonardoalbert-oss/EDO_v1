@@ -128,9 +128,15 @@ export function reproducirEntrada({ titulo, subtitulo = 'Demostración solo para
         if (m.z < 0.3) { m.z += 30; m.x = (Math.random() - 0.5) * 16; m.y = (Math.random() - 0.5) * 10; }
         const px = W / 2 + (m.x / m.z) * W * 0.5, py = H / 2 + (m.y / m.z) * W * 0.5, L = Math.min(60, 26 / m.z + vel * 0.4 / m.z);
         const col = m.c < 0.7 ? '90,106,140' : m.c < 0.85 ? '58,169,187' : '217,100,74';
-        g.strokeStyle = `rgba(${col},${alfaV * Math.min(1, 3 / m.z)})`; g.lineWidth = Math.max(0.6, 3 / m.z);
+        g.strokeStyle = `rgba(${col},${alfaV * Math.min(1, 9 / m.z)})`; g.lineWidth = Math.max(1, 6 / m.z);
         g.beginPath(); g.moveTo(px - L * Math.cos(m.a), py - L * Math.sin(m.a)); g.lineTo(px + L * Math.cos(m.a), py + L * Math.sin(m.a)); g.stroke();
       }
+    }
+    if (qv > 0 && t < T.golpe) {
+      // resplandor central que crece con la velocidad
+      const gr = g.createRadialGradient(W / 2, H / 2, 0, W / 2, H / 2, Math.max(W, H) * 0.5);
+      gr.addColorStop(0, `rgba(217,100,74,${0.35 * qv})`); gr.addColorStop(1, 'rgba(0,0,0,0)');
+      g.fillStyle = gr; g.fillRect(0, 0, W, H);
     }
     // destello y polvo del golpe
     const tg = t - T.golpe;
