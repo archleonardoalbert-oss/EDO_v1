@@ -181,7 +181,7 @@ export function lineaFase(g, { f, eqs, coord, desde, hasta, otra, rango, orienta
     }
   });
 }
-export const fmtTex = (v) => (Math.abs(v - Math.round(v)) < 1e-9 ? String(Math.round(v)) : v.toFixed(2)).replace('-', '-');
+export const fmtTex = (v) => (Math.abs(v - Math.round(v)) < 1e-4 ? String(Math.round(v)) : v.toFixed(2));
 
 /**
  * El símbolo de la conferencia para el tipo de equilibrio: sumidero ↓•↑, fuente ↑•↓, nodo ↓•↓ (↑•↑ con sentidoNodo = 1).

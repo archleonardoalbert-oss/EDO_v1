@@ -10,7 +10,7 @@ export const catalogo = [
     ilustracion: '<text x="4" y="32" class="i-tex">∫</text><text x="16" y="30" class="i-texto">dy/h</text><text x="54" y="30" class="i-texto i-blanco">=</text><text x="66" y="32" class="i-tex">∫</text><text x="78" y="30" class="i-texto">g dt</text>',
   },
   {
-    numero: 3, romano: 'III', titulo: 'Campos de pendientes', color: 'ambar', disponible: true, practica: true,
+    numero: 3, romano: 'III', titulo: 'Campos de pendientes', color: 'ambar', disponible: true, practica: true, valientes: true,
     ilustracion: '<g class="i-campo">' + Array.from({ length: 7 }, (_, i) => Array.from({ length: 4 }, (_, j) => { const x = 8 + i * 17, y = 8 + j * 12, m = ((y - 26) / -12) - (x - 60) / 30, a = Math.atan(m) ; return `<line x1="${(x - 6 * Math.cos(a)).toFixed(1)}" y1="${(y + 6 * Math.sin(a)).toFixed(1)}" x2="${(x + 6 * Math.cos(a)).toFixed(1)}" y2="${(y - 6 * Math.sin(a)).toFixed(1)}"/>`; }).join('')).join('') + '</g><path d="M4 30C30 34 50 30 70 22S100 4 116 0" class="i-cian"/>',
   },
   {

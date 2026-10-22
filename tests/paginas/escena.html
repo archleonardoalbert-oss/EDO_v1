@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="../../favicon.svg"><link rel="stylesheet" href="../../vendor/katex/katex.min.css"><link rel="stylesheet" href="../../css/biblioteca.css">
+<script src="../../vendor/katex/katex.min.js"></script><script src="../../vendor/katex/contrib/auto-render.min.js"></script>
+<script type="module">
+// Monta una escena suelta (?e=libro/id) con pasos genéricos: para revisar escenas de prácticas y valientes.
+import { crearEstudio } from '../../motor/estudio.js';
+const ruta = new URLSearchParams(location.search).get('e');
+const escena = (await import(`../../escenas/${ruta}.js`)).default;
+const pasos = Array.from({ length: escena.pasos }, (_, i) => ({ texto: `paso ${i + 1}` }));
+const est = crearEstudio({ pasos, escena, nombre: ruta });
+document.getElementById('raiz').append(est.raiz); est.iniciar(); window.estudio = est;
+</script></head>
+<body class="pagina-tema"><main id="raiz"></main></body></html>
