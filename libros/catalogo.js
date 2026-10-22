@@ -14,7 +14,7 @@ export const catalogo = [
     ilustracion: '<g class="i-campo">' + Array.from({ length: 7 }, (_, i) => Array.from({ length: 4 }, (_, j) => { const x = 8 + i * 17, y = 8 + j * 12, m = ((y - 26) / -12) - (x - 60) / 30, a = Math.atan(m) ; return `<line x1="${(x - 6 * Math.cos(a)).toFixed(1)}" y1="${(y + 6 * Math.sin(a)).toFixed(1)}" x2="${(x + 6 * Math.cos(a)).toFixed(1)}" y2="${(y - 6 * Math.sin(a)).toFixed(1)}"/>`; }).join('')).join('') + '</g><path d="M4 30C30 34 50 30 70 22S100 4 116 0" class="i-cian"/>',
   },
   {
-    numero: 4, romano: 'IV', titulo: 'Euler · Existencia y unicidad', color: 'verde', practica: true,
+    numero: 4, romano: 'IV', titulo: 'Euler · Existencia y unicidad', color: 'verde', disponible: true, practica: true, valientes: true,
     ilustracion: '<path d="M6 44C40 42 80 30 116 4" class="i-cian"/><path d="M6 44L34 40L62 33L90 22L116 10" class="i-ambar"/><g class="i-ambar-r"><circle cx="6" cy="44" r="2.6"/><circle cx="34" cy="40" r="2.6"/><circle cx="62" cy="33" r="2.6"/><circle cx="90" cy="22" r="2.6"/><circle cx="116" cy="10" r="2.6"/></g>',
   },
   {

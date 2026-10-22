@@ -72,3 +72,30 @@ export function zorro(g, x, y, { tam = 1, alfa = 1, color = 'ambar' } = {}) {
 
 /** Número pseudoaleatorio determinista en [0, 1) a partir de un entero (para posiciones «al azar» estables). */
 export const azar = (i) => { const s = Math.sin(i * 127.1 + 311.7) * 43758.5453; return s - Math.floor(s); };
+
+/**
+ * Poligonal de Euler {t[], y[]} que crece segmento a segmento con p (p = 1: todos). Devuelve el índice del último
+ * punto dibujado.
+ */
+export function poligonoEuler(g, P, eu, { p = 1, color = 'ambar', puntos = true, alfa = 1, ancho = 2.2, hasta = eu.t.length - 1, radio = 3.2 } = {}) {
+  const n = hasta, avance = ease(p) * n, k = Math.floor(avance), s = avance - k;
+  const pts = [];
+  for (let i = 0; i <= Math.min(k, n); i++) if (Number.isFinite(eu.y[i])) pts.push([P.X(eu.t[i]), P.Y(eu.y[i])]);
+  if (k < n && Number.isFinite(eu.y[k + 1])) pts.push([P.X(eu.t[k] + s * (eu.t[k + 1] - eu.t[k])), P.Y(eu.y[k] + s * (eu.y[k + 1] - eu.y[k]))]);
+  g.recortar(P.caja, () => {
+    g.linea(pts, { color, ancho, alfa, brillo: 3 });
+    if (puntos) pts.slice(0, Math.min(k, n) + 1).forEach(([x, y]) => g.circulo(x, y, radio, { color, alfa, brillo: 6 }));
+  });
+  return Math.min(k, n);
+}
+
+/** Tabla (filas de textos KaTeX) que se llena fila a fila; `resaltar` = índice de fila en ámbar. */
+export function tabla(g, clave, x, y, cabecera, filas, { p = 1, anchos = [], alto = 24, tam = 14, resaltar = -1, colores = [] } = {}) {
+  const xs = []; let acc = x;
+  cabecera.forEach((_, i) => { xs.push(acc); acc += anchos[i] ?? 70; });
+  cabecera.forEach((c, i) => g.tex(`${clave}-h${i}`, xs[i], y, c, { color: 'texto2', tam, ancla: 'l' }));
+  g.linea([[x, y + 13], [acc - 10, y + 13]], { color: 'muyTenue', ancho: 1 });
+  const n = Math.ceil(ease(p) * filas.length);
+  filas.slice(0, n).forEach((fila, j) => fila.forEach((c, i) => g.tex(`${clave}-${j}-${i}`, xs[i], y + alto * (j + 1) + 6, c, {
+    color: j === resaltar ? 'ambar' : colores[i] ?? 'texto', tam, ancla: 'l' })));
+}
