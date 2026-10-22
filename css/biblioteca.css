@@ -202,3 +202,36 @@ ol.pasos.ocultar-futuros li.futuro { display: none; }
 .estudio-amplio .columna-escena { position: static; }
 .recuadro { max-width: 70ch; font-size: 18px; margin: 8px 0 18px; padding: 12px 18px; border-left: 3px solid var(--c, var(--verde)); background: var(--panel); border-radius: 0 10px 10px 0; }
 .recuadro .rotulo { color: var(--c, var(--verde)); }
+
+/* color de acento por libro / pieza */
+.c-cian { --c: var(--cian); } .c-ciruela { --c: var(--ciruela); } .c-ambar { --c: var(--ambar); }
+.c-verde { --c: var(--verde); } .c-violeta { --c: var(--violeta); }
+.indice-parte { margin: 30px 0 4px; font: 12px var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--c, var(--tenue)); }
+ol.indice-libro a { grid-template-columns: 3ch 1fr auto; }
+ol.indice-libro .lleva { font: 11px var(--mono); color: var(--tenue); }
+ol.indice-libro .lleva.valiente { color: #d9644a; }
+.resumen-libro { margin-top: 52px; }
+.resumen-libro h2, .valientes-indice h2 { font-weight: 600; font-size: 24px; color: #ece7d8; margin: 0 0 6px; border-left: 6px solid var(--c, var(--verde)); padding-left: 18px; }
+.resumen-libro ul { max-width: 75ch; color: var(--texto-2); }
+.resumen-libro li { margin: 6px 0; }
+.valientes-indice { margin-top: 52px; --c: #d9644a; }
+.valientes-indice .tipo { --c: #d9644a; }
+.portada .profe { font-size: 10.5px; color: var(--tenue); }
+.i-ambar { fill: none; stroke: var(--ambar); stroke-width: 2.2; }
+.i-campo line { stroke: #5a6a8c; stroke-width: 1.4; stroke-linecap: round; }
+.i-blanco-l { fill: none; stroke: var(--texto); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.i-tex { fill: var(--ciruela); font: italic 26px var(--lectura); }
+.i-blanco { fill: var(--texto); }
+ol.indice-libro a::before { content: none; }
+ol.indice-libro .num { font-size: 12px; color: var(--tenue); }
+@media (max-width: 820px) { ol.indice-libro a { grid-template-columns: 3ch 1fr; } ol.indice-libro .lleva { grid-column: 2; } }
+
+/* ============ puerta a la demostración para valientes ============ */
+.valiente-puerta { margin: 34px 0 0; }
+.boton-valiente { display: inline-flex; align-items: center; gap: 16px; padding: 14px 22px 14px 18px; border-radius: 12px;
+  background: radial-gradient(ellipse at 20% 0%, #2a0e08, #0a0303 70%); border: 1px solid #5a2216; color: #f0d9b5;
+  box-shadow: 0 0 0 1px #000, 0 10px 30px -10px #d9644a55, inset 0 0 18px #d9644a14; transition: transform .25s, box-shadow .25s; }
+.boton-valiente:hover { text-decoration: none; transform: translateY(-2px) scale(1.01); box-shadow: 0 0 0 1px #000, 0 14px 40px -8px #d9644a88, inset 0 0 26px #d9644a22; }
+.boton-valiente .espadas { font-size: 26px; filter: drop-shadow(0 0 6px #d9644a); }
+.boton-valiente b { display: block; font: 700 13px var(--mono); letter-spacing: .18em; text-transform: uppercase; color: #f3a073; }
+.boton-valiente small { display: block; font-size: 15px; color: #c9b598; }
