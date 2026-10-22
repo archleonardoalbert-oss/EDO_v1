@@ -7,7 +7,7 @@ export const catalogo = [
   },
   {
     numero: 2, romano: 'II', titulo: 'Separación de variables', color: 'ciruela', disponible: true, valientes: true,
-    ilustracion: '<text x="4" y="32" class="i-tex">∫</text><text x="16" y="30" class="i-texto">dy/h</text><text x="54" y="30" class="i-texto i-blanco">=</text><text x="66" y="32" class="i-tex">∫</text><text x="78" y="30" class="i-texto">g dt</text>',
+    ilustracion: '<text x="4" y="32" class="i-tex">∫</text><text x="16" y="30" class="i-texto">h⁻¹dy</text><text x="54" y="30" class="i-texto i-blanco">=</text><text x="66" y="32" class="i-tex">∫</text><text x="78" y="30" class="i-texto">g dt</text>',
   },
   {
     numero: 3, romano: 'III', titulo: 'Campos de pendientes', color: 'ambar', disponible: true, practica: true, valientes: true,
