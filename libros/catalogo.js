@@ -22,7 +22,7 @@ export const catalogo = [
     ilustracion: '<line x1="60" y1="2" x2="60" y2="48" class="i-eje"/><path d="M60 4V14M56 10L60 14L64 10M60 36V46M56 40L60 36L64 40" class="i-blanco-l"/><circle cx="60" cy="25" r="4.5" class="i-verde-r"/><path d="M20 4V46M16 34L20 30L24 34M16 16L20 20L24 16" class="i-blanco-l" opacity=".5"/><path d="M100 4V46M96 34L100 38L104 34M96 12L100 16L104 12" class="i-blanco-l" opacity=".5"/>',
   },
   {
-    numero: 6, romano: 'VI', titulo: 'Bifurcaciones · Ecuaciones lineales', color: 'cian', practica: true,
+    numero: 6, romano: 'VI', titulo: 'Bifurcaciones · Ecuaciones lineales', color: 'cian', disponible: true, practica: true, valientes: true,
     ilustracion: '<line x1="4" y1="25" x2="116" y2="25" class="i-eje"/><path d="M70 25C70 12 40 6 6 4" class="i-ambar"/><path d="M70 25C70 38 40 44 6 46" class="i-verde"/><circle cx="70" cy="25" r="3.5" class="i-ciruela-r"/>',
   },
   {

@@ -58,10 +58,11 @@ for (const { cat, libro, practica, valientes } of libros) {
   });
 
   test(`Libro ${libro.romano}: todas las diapositivas de la conferencia están cubiertas`, () => {
-    const cubiertas = new Set(libro.temas.flatMap((t) => t.diapositivas ?? []));
-    const total = PAGINAS[libro.numero], resumen = total;  // la última es el resumen (va al índice del libro)
+    // el resumen de la clase (por defecto, la última diapositiva) va al índice del libro
+    const total = PAGINAS[libro.numero];
+    const cubiertas = new Set([...libro.temas.flatMap((t) => t.diapositivas ?? []), ...(libro.resumen?.diapositivas ?? [total])]);
     const faltan = [];
-    for (let p = 2; p < resumen; p++) if (!cubiertas.has(p)) faltan.push(p);
+    for (let p = 2; p <= total; p++) if (!cubiertas.has(p)) faltan.push(p);
     assert.deepEqual(faltan, [], `diapositivas sin tema: ${faltan.join(', ')}`);
     assert.ok(libro.resumen?.bloques?.length, 'falta el resumen de la clase');
     libro.resumen.bloques.flatMap((b) => b.items).forEach((x) => revisarTexto(x, `${libro.romano}/resumen`));

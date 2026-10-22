@@ -2,7 +2,7 @@
 // en que se haría a mano, una capa por paso de la solución.
 import { definirEscena } from './comun.js';
 import { plano, ease, tramo } from '../motor/plano.js';
-import { ejes, campo, solucion, punto, rectaEquilibrio, lineaFase, equilibrios } from './primitivas.js';
+import { ejes, campo, solucion, punto, rectaEquilibrio, lineaFase, equilibrios, grafica as graficaFn } from './primitivas.js';
 import { direccion, formula, poligonoEuler, tabla } from './piezas.js';
 import { euler as eulerNum } from '../motor/numerico.js';
 
@@ -132,4 +132,32 @@ export function eulerTabla({ f, tex, t0 = 0, y0, dt, n, vista, v = 'y', nota }) 
       },
     ],
   });
+}
+
+/**
+ * Solución de una lineal y' = a·y + b(t) (CP6): familia homogénea → la particular (y su residuo nulo) → la familia
+ * general → (si hay dato) la solución del PVI.
+ */
+export function linealSol({ a, b, yp, tex, texYp, texGen, vista, pvi }) {
+  const P = plano({ x: 60, y: 50, w: 640, h: 360 }, vista);
+  const capas = [
+    (g, c, o) => {
+      ejes(g, P);
+      campo(g, P, (t, y) => a * y + b(t), { alfa: 0.35, p: o.p });
+      formula(g, 'ec', 380, 24, R`\dfrac{dy}{dt} = ${tex}`, { p: o.p, tam: 16 });
+      [-2, -1, 1, 2].forEach((k) => graficaFn(g, P, (t) => k * Math.exp(a * t), { color: 'violeta', alfa: 0.55, brillo: 0, ancho: 1.4, p: o.p }));
+      g.tex('yh', 120, 440, R`y_h = k\,e^{${a}t}`, { color: 'violeta', tam: 15, alfa: ease(o.p), fondo: true });
+    },
+    (g, c, o) => { graficaFn(g, P, yp, { p: o.p }); g.tex('yp', 380, 440, texYp, { color: 'cian', tam: 15, alfa: ease(o.p), fondo: true }); },
+    (g, c, o) => {
+      [-2, -1, 1, 2].forEach((k) => graficaFn(g, P, (t) => k * Math.exp(a * t) + yp(t), { color: 'verde', alfa: 0.6, brillo: 0, ancho: 1.6, p: o.p }));
+      g.tex('gen', 640, 440, texGen, { color: 'verde', tam: 15, alfa: ease(o.p), fondo: true });
+    },
+  ];
+  if (pvi) capas.push((g, c, o) => {
+    graficaFn(g, P, pvi.y, { color: 'cian', ancho: 3, p: o.p });
+    punto(g, P.X(pvi.t0), P.Y(pvi.y0), { color: 'ciruela', r: 6, halo: true });
+    g.tex('pvi', 380, 60, pvi.tex, { color: 'cian', tam: 15, alfa: ease(o.p), fondo: true });
+  });
+  return definirEscena({ alto: 460, preparar: () => ({}), duracion: capas.map(() => 2000), leyenda: { violeta: 'homogénea', cian: 'particular', verde: 'solución general' }, capas });
 }
