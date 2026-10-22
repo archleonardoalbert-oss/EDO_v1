@@ -22,6 +22,7 @@ export function ejerciciosQueCitan(practicas, l, t, base) {
 
 /** Demostraciones para valientes de un libro (libros/N/valientes.js), o []. */
 export async function cargarValientes(base, l) {
+  if (!base && !catalogo.find((x) => x.numero === Number(l))?.valientes) return [];
   try { return (await import(`../${base}libros/${l}/valientes.js`)).default; }
   catch (e) { if (/Failed to fetch|Cannot find|error loading|404/i.test(e.message)) return []; throw e; }
 }
