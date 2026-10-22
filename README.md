@@ -21,10 +21,12 @@ cada libro se divide en **temas** que cubren entre todos **cada diapositiva** de
 | **I** | ¿Qué son las EDO? Modelación: exponencial, logístico, presa-depredador | 10 | — |
 | **II** | Separación de variables: soluciones, PVI, separables, soluciones perdidas e implícitas | 7 | — |
 | **III** | Campos de pendientes | 8 | CP 3 · 7 ejercicios |
-| IV | Método de Euler · existencia y unicidad | en preparación | CP 4 |
-| V | Equilibrios · línea de fase | en preparación | CP 5 |
-| VI | Bifurcaciones · ecuaciones lineales | en preparación | CP 6 |
-| VII | Variación de la constante · factor integrante · cambio de variable | en preparación | — |
+| **IV** | Método de Euler · existencia y unicidad | 10 | CP 4 · 7 ejercicios |
+| **V** | Equilibrios · línea de fase | 8 | CP 5 · 7 ejercicios |
+| **VI** | Bifurcaciones · ecuaciones lineales | 11 | CP 6 · 8 ejercicios |
+| **VII** | Variación de la constante · factor integrante · cambio de variable | 10 | — |
+
+En total: **64 temas**, **29 ejercicios** de clase práctica y **12 demostraciones para valientes**.
 
 ## Cómo está pensada
 
