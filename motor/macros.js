@@ -3,8 +3,8 @@
 // \cSol (solución, cian) · \cEst (estable, verde) · \cIne (inestable, ámbar) · \cNodo (nodo, violeta) · \cPar (parámetro, ciruela).
 export const MACROS = {
   '\\R': '\\mathbb{R}',
-  '\\dydt': '\\dfrac{dy}{dt}',
-  '\\dPdt': '\\dfrac{dP}{dt}',
+  '\\dydt': '\\frac{dy}{dt}',
+  '\\dPdt': '\\frac{dP}{dt}',
   '\\cSol': '\\htmlClass{k-cian}{#1}',
   '\\cEst': '\\htmlClass{k-verde}{#1}',
   '\\cIne': '\\htmlClass{k-ambar}{#1}',

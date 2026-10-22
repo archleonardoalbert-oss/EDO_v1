@@ -54,7 +54,7 @@ export default [
           { texto: R`Luego $P(t) = P_0e^{kt}$: cualquier solución con ese dato inicial es exactamente esta.`, conclusion: true },
         ],
       },
-      { tipo: 'nota', texto: R`<b>Por qué importa.</b> «La solución general es una familia» solo es verdad si la familia no se deja a nadie fuera. Aquí lo demostramos para $P' = kP$; el caso general (cualquier $f$ con $\partial f / \partial y$ continua) es el <b>teorema de unicidad</b> del Libro IV. El truco de multiplicar por $e^{-kt}$ reaparece en el Libro VII con nombre propio: <b>factor integrante</b>.` },
+      { tipo: 'nota', texto: R`<b>Por qué importa.</b> «La solución general es una familia» solo es verdad si la familia no se deja a nadie fuera. Aquí lo demostramos para $P' = kP$; el caso general (cualquier $f$ con $\frac{\partial f}{\partial y}$ continua) es el <b>teorema de unicidad</b> del Libro IV. El truco de multiplicar por $e^{-kt}$ reaparece en el Libro VII con nombre propio: <b>factor integrante</b>.` },
     ],
     escena: '1/v-familia-exponencial',
     escenaTexto: R`Si $P$ es solución, la curva $Q(t) = P(t)e^{-kt}$ es una recta horizontal: el factor $e^{-kt}$ deshace exactamente el crecimiento. Si $P$ no es solución, $Q$ se tuerce.`,
