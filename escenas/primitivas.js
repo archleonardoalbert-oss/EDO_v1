@@ -40,9 +40,10 @@ export function ejes(g, P, { t = 't', y = 'y', p = 1, alfa = 1, numeros = true, 
  * Campo de pendientes de f en una cuadrícula: cada marca entra girando desde horizontal hasta su pendiente,
  * en una ola de izquierda a derecha.
  */
-export function campo(g, P, f, { nt = 23, ny = 15, p = 1, alfa = 0.85, largo = 15, color = 'campo', ancho = 1.5, t, y, destacar } = {}) {
+export function campo(g, P, f, { nt = 23, ny = 15, p = 1, alfa = 0.85, largo = 15, color = 'campo', ancho = 1.5, t, y, destacar, mostrar } = {}) {
   const { x, w } = P.caja;
   for (const m of marcasCampo(f, P, { nt, ny, t, y })) {
+    if (mostrar && !mostrar(m)) continue;
     const px = P.X(m.t), py = P.Y(m.y), retardo = 0.6 * ((px - x) / w);
     const q = ease(tramo(p, retardo, retardo + 0.4));
     if (q <= 0) continue;
