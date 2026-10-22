@@ -3,7 +3,7 @@
 import { ease, tramo, mezclar, solucionCache, marcasCampo } from '../motor/plano.js';
 import { clasificar, raices } from '../motor/numerico.js';
 
-export const COLOR_TIPO = { sumidero: 'verde', fuente: 'ambar', nodo: 'violeta' };
+export const COLOR_TIPO = { sumidero: 'verde', fuente: 'ambar', nodo: 'violeta', hueco: 'rojo' };
 const frac = (x) => x - Math.floor(x);
 
 /** Marcas de un eje: múltiplos «redondos» dentro de [a, b]. */
@@ -173,7 +173,9 @@ export function lineaFase(g, { f, eqs, coord, desde, hasta, otra, rango, orienta
     if (e.y < ya || e.y > yb) return;
     const qe = ease(tramo(p, 0.15 + 0.08 * i, 0.5 + 0.08 * i));
     const [px, py] = at(coord(e.y)), col = COLOR_TIPO[e.tipo];
-    g.circulo(px, py, tam * 0.6 + 6 * (1 - qe), { color: col, alfa: alfa * qe, brillo: 10 });
+    // «hueco»: f no está definida allí (no es un equilibrio): círculo vacío
+    if (e.tipo === 'hueco') g.circulo(px, py, tam * 0.75, { color: col, alfa: alfa * qe, relleno: false, ancho: 2.2 });
+    else g.circulo(px, py, tam * 0.6 + 6 * (1 - qe), { color: col, alfa: alfa * qe, brillo: 10 });
     if (rotular && e.rotulo !== false) {
       const txt = e.rotulo ?? fmtTex(e.y);
       if (V) g.tex(`${clave}-e${i}`, px - 14, py, txt, { color: col, alfa: alfa * qe, tam: 14, ancla: 'r' });

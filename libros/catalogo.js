@@ -18,7 +18,7 @@ export const catalogo = [
     ilustracion: '<path d="M6 44C40 42 80 30 116 4" class="i-cian"/><path d="M6 44L34 40L62 33L90 22L116 10" class="i-ambar"/><g class="i-ambar-r"><circle cx="6" cy="44" r="2.6"/><circle cx="34" cy="40" r="2.6"/><circle cx="62" cy="33" r="2.6"/><circle cx="90" cy="22" r="2.6"/><circle cx="116" cy="10" r="2.6"/></g>',
   },
   {
-    numero: 5, romano: 'V', titulo: 'Equilibrios · Línea de fase', color: 'violeta', practica: true,
+    numero: 5, romano: 'V', titulo: 'Equilibrios · Línea de fase', color: 'violeta', disponible: true, practica: true, valientes: true,
     ilustracion: '<line x1="60" y1="2" x2="60" y2="48" class="i-eje"/><path d="M60 4V14M56 10L60 14L64 10M60 36V46M56 40L60 36L64 40" class="i-blanco-l"/><circle cx="60" cy="25" r="4.5" class="i-verde-r"/><path d="M20 4V46M16 34L20 30L24 34M16 16L20 20L24 16" class="i-blanco-l" opacity=".5"/><path d="M100 4V46M96 34L100 38L104 34M96 12L100 16L104 12" class="i-blanco-l" opacity=".5"/>',
   },
   {
