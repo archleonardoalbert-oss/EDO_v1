@@ -26,7 +26,7 @@ export const catalogo = [
     ilustracion: '<line x1="4" y1="25" x2="116" y2="25" class="i-eje"/><path d="M70 25C70 12 40 6 6 4" class="i-ambar"/><path d="M70 25C70 38 40 44 6 46" class="i-verde"/><circle cx="70" cy="25" r="3.5" class="i-ciruela-r"/>',
   },
   {
-    numero: 7, romano: 'VII', titulo: 'Variación de la constante · Factor integrante · Cambio de variable', color: 'ciruela',
+    numero: 7, romano: 'VII', titulo: 'Variación de la constante · Factor integrante · Cambio de variable', color: 'ciruela', disponible: true, valientes: true,
     ilustracion: '<text x="8" y="30" class="i-texto">c</text><path d="M24 26H48M44 22L48 26L44 30" class="i-blanco-l"/><text x="56" y="30" class="i-texto">c(t)</text><path d="M86 34C92 10 100 40 114 14" class="i-cian"/>',
   },
 ];
