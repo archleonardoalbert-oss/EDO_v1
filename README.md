@@ -289,7 +289,7 @@ vendor/                   KaTeX 0.18.9 y fuentes (Noto Serif, JetBrains Mono), p
 fuentes/                  PDF de las conferencias y de las clases prácticas usados como fuente
 tests/                    pruebas unitarias (node:test) y de navegador (Chromium)
 herramientas/             render de páginas y de todos los pasos de una escena a PNG
-docs/                     diseño y planes de trabajo
+LICENSE                   licencia MIT del código
 ```
 
 La arquitectura separa tres cosas:
@@ -368,7 +368,11 @@ herramientas/pasos.sh 'tests/paginas/escena.html?e=cp3/4' hoja.png .lienzo   # u
   - [KaTeX](https://katex.org/) 0.18.9, licencia MIT;
   - [Noto Serif](https://fonts.google.com/noto/specimen/Noto+Serif) y
     [JetBrains Mono](https://www.jetbrains.com/lp/mono/), SIL Open Font License 1.1 (textos en `vendor/fuentes/`).
-- La licencia del código de esta herramienta aún no se ha definido.
+- **Código de esta herramienta** (motor, escenas, estilos, textos de los libros y pruebas): licencia
+  [MIT](LICENSE). Puedes usarlo, copiarlo, modificarlo y redistribuirlo libremente, conservando el aviso de
+  copyright. La licencia MIT cubre solo el código y los textos propios de la herramienta, no el material
+  original de la asignatura (primer punto) ni las bibliotecas y fuentes de terceros (segundo punto), que
+  mantienen sus propias licencias.
 
 ---
 
