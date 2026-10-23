@@ -160,6 +160,23 @@ ningún sitio y se puede borrar con «empezar de cero».
 
 ## Uso
 
+### La forma más sencilla: los ejecutables
+
+Hay un ejecutable por sistema operativo, `MatCom_EDO_v<versión>_<sistema>`, que lleva la web dentro. Con un
+doble clic abre tu navegador predeterminado en la biblioteca, sin instalar nada ni necesitar internet:
+
+| Sistema | Archivo | Funciona en |
+|---|---|---|
+| Windows | `MatCom_EDO_v1.0_Windows.exe` | Windows 10 y 11 de 64 bits |
+| macOS | `MatCom_EDO_v1.0_Mac.app` | macOS 11 o posterior, Intel y Apple Silicon |
+| Linux | `MatCom_EDO_v1.0_Linux` | cualquier distribución de 64 bits (binario estático: no depende de la libc) |
+
+Otro doble clic con la biblioteca ya abierta solo abre otra pestaña. Al cerrar todas las pestañas, el programa
+se apaga solo a los pocos minutos. Los ejecutables no están firmados por Microsoft ni por Apple, así que la primera
+vez el sistema avisa; el `LÉEME.txt` que los acompaña explica cómo abrirlos igualmente.
+
+Si prefieres trabajar con el código fuente, sigue los pasos de abajo.
+
 ### Requisitos
 
 - **Python 3** (cualquier versión actual), solo para servir los archivos en local.
@@ -289,6 +306,7 @@ vendor/                   KaTeX 0.18.9 y fuentes (Noto Serif, JetBrains Mono), p
 fuentes/                  PDF de las conferencias y de las clases prácticas usados como fuente
 tests/                    pruebas unitarias (node:test) y de navegador (Chromium)
 herramientas/             render de páginas y de todos los pasos de una escena a PNG
+empaquetar/               lanzador en Go que genera los ejecutables de doble clic
 LICENSE                   licencia MIT del código
 ```
 
@@ -356,6 +374,21 @@ herramientas/pasos.sh 'tests/paginas/escena.html?e=cp3/4' hoja.png .lienzo   # u
 - Marca todo lo corregido (`marca: 'corregido'`) o añadido (`marca: 'añadido'`).
 - En las demostraciones, justifica cada implicación (campo `porque`) y nombra lo que se da por sabido.
 - Verifica cada número con un test.
+
+### Generar los ejecutables
+
+```sh
+empaquetar/construir.sh 1.1 ../ejecutables/EDO
+```
+
+`empaquetar/` contiene un pequeño servidor en Go que incrusta la web y abre el navegador. El script lo compila para
+Windows, Linux (estático) y macOS (binario universal dentro de una `.app` firmada ad hoc con
+[rcodesign](https://github.com/indygreg/apple-platform-rs)). Necesita Go ≥ 1.22, `llvm-lipo` (o `lipo`),
+`rsvg-convert` y Python 3.
+
+Todas las versiones usan el puerto 8780, porque el progreso se guarda en el navegador por dirección: así se conserva
+al actualizar. Si al abrir una versión nueva sigue abierta una anterior, la nueva le pide que se cierre y ocupa su
+lugar.
 
 ---
 

@@ -1,3 +1,5 @@
 .superpowers/
 node_modules/
 docs/superpowers/
+empaquetar/sitio/
+empaquetar/*.syso
